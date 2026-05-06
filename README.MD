@@ -2,6 +2,8 @@
 
 Automatically sorts your Downloads folder nightly using a Windows Scheduled Task.
 
+**!!! WARNING STILL HEAVILY WORK IN PROGESS !!! use at your own risk**
+
 ---
 
 | File | Role |
