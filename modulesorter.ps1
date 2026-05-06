@@ -1,12 +1,14 @@
 #retrieve the username
 [Environment]::UserName
-$Env:UserName
+$userpath = [Environment]::GetFolderPath("UserProfile")
+
 #paths
-$DownloadsPath = "C:\Users\metro\Downloads"
-$BBBPath = "C:\Users\metro\Documents\BBB"
+$docpaths = [Environment]::GetFolderPath("MyDocuments")
+$PicturePath = Join-Path $userpath "Pictures"
+$DownloadsPath = Join-Path $userpath "Downloads"
+$BBBPath = "$docpaths\Documents\BBB"
 $BBBPathResult = Get-ChildItem -Path $BBBPath | 
 Where-Object {$_.Name -like "Modul*"} #Filter
-$PicturePath = "C:\Users\metro\Pictures"
 $DownloadsPathResult = Get-ChildItem -Path $DownloadsPath -Recurse 
 
 #output Path Results
@@ -28,19 +30,15 @@ $DownloadsPathResult | ForEach-Object {
                 New-Item .Path "C:\Users\metro\Documents\BBB" -Force
             }
             Move-Item -Path $_.FullName -Destination "$BBBPath\Modul_$Number"
-            Write-Host "Excersizes moved to BBB"
         } else {
             New-Item -Path "$BBBPath\Modul_$Number" -ItemType Directory
             Move-Item -Path $_.FullName -Destination "$BBBPath\Modul_$Number"
-            Write-Host "Excersizes moved and made Folders"
         }
     }
     if ($_.Name -match '\.(.msi|.exe|.pkg)') {
         Remove-Item $_.FullName
-        Write-Host "Extensions deleted"
     }
     if ($_.Name -match '(.png|.jpg|.webp|.gif|.avif)') {
         Move-Item -Path $_.FullName -Destination $PicturePath
-        Write-Host "Moved Pictures"
     }
 }
