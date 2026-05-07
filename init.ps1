@@ -7,11 +7,10 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 
 
 #config
-configure automation
 $settings = New-ScheduledTaskSettingsSet `
     -AllowStartIfOnBatteries `
     -StartWhenAvailable `
-    -Hidden
+    
 
 $trigger = New-ScheduledTaskTrigger -Daily -At "02:00" # <-- configure at which time it fires here!
 $action = New-ScheduledTaskAction -Execute "powershell.exe" `
@@ -19,7 +18,6 @@ $action = New-ScheduledTaskAction -Execute "powershell.exe" `
 
 #automation gets registered
 Register-ScheduledTask -TaskName "FileSort" `
-    -TaskName "FileSort" `
     -Trigger $trigger `
     -Action $action `
     -RunLevel Highest `
