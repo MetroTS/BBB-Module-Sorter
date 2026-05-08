@@ -1,17 +1,16 @@
 # Module sorter for all the BBB students out there
 
 
-blabla
 Automatically sorts your Downloads folder nightly using a Windows Scheduled Task.
 
 **!!! WARNING STILL HEAVILY WORK IN PROGESS !!! use at your own risk**
 
 ---
 
-| File | Role |
-|---|---|
-| `init.ps1` | One-time setup script. Registers Scheduled-Task |
-| `modulesorter.ps1` | Actual sorting logic |
+| File               | Role                                            |
+| ------------------ | ----------------------------------------------- |
+| `init.ps1`         | One-time setup script. Registers Scheduled-Task |
+| `modulesorter.ps1` | Actual sorting logic                            |
 
 `init.ps1` is run **once** by the user. It registers `modulesorter.ps1` as a Scheduled-Task in Windows to repeat every day at 2 AM. If the machine was off at that time it will fire it at the next boot.
 
