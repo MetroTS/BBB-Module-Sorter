@@ -41,7 +41,7 @@ cd "C:\Users\yourfolderpathere"
 \.init.ps1
 ```
 
-**3. Verify the install
+**3. Verify the install**
 
 ```powershell
 Get-ScheduledTask -TaskName "FileSort"
